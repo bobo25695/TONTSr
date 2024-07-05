@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # 更新为 v300
+      uses: actions/checkout@v3  # 更新为 v3
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3  # 更新为 v3
+      uses: actions/setup-node@v3  # 更新为 v311
       with:
         node-version: '20'  # 使用最新的 Node.js 版本
 
