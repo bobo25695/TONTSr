@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # 更新为 v312
+      uses: actions/checkout@v3  # 使用最新版本
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3  # 更新为 v3
+      uses: actions/setup-node@v3  # 使用最新版本
       with:
         node-version: '20'  # 使用最新的 Node.js 版本
 
@@ -28,4 +28,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./dist  # 确保这是您的构建输出目录
