@@ -33,6 +33,16 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Debug information
+        run: |
+          echo "Node version:"
+          node -v
+          echo "NPM version:"
+          npm -v
+          echo "Directory listing:"
+          ls -al
+          echo "Dist directory listing:"
+          ls -al ./dist
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
