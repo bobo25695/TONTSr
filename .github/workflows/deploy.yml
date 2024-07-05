@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# .github/workflows/deploy.yml
 name: Deploy static content to Pages
 
 on:
@@ -21,6 +21,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: TonTS  # 设置工作目录为 TonTS 文件夹
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,19 +33,9 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: npm ci  # 使用 npm ci 安装依赖
       - name: Build
         run: npm run build
-      - name: Debug information
-        run: |
-          echo "Node version:"
-          node -v
-          echo "NPM version:"
-          npm -v
-          echo "Directory listing:"
-          ls -al
-          echo "Dist directory listing:"
-          ls -al ./dist
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
