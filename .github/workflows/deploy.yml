@@ -21,27 +21,28 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: TonTS  # 设置工作目录为 TonTS 文件夹
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: TonTS  # 将项目克隆到 TonTS 文件夹中
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci  # 使用 npm ci 安装依赖
+        run: npm ci
+        working-directory: TonTS  # 设置工作目录为 TonTS 文件夹
       - name: Build
         run: npm run build
+        working-directory: TonTS  # 设置工作目录为 TonTS 文件夹
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './TonTS/dist'  # 设置 artifact 路径
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
