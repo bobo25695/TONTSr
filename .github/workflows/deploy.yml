@@ -24,14 +24,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: TonTS  # 将项目克隆到 TonTS 文件夹中
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: './TonTS/package-lock.json'  # 指定 package-lock.json 文件路径
+          cache-dependency-path: 'TonTS/package-lock.json'  # 更新路径为相对路径
       - name: Install dependencies
         run: npm ci
         working-directory: ./TonTS  # 设置工作目录为 TonTS 文件夹
